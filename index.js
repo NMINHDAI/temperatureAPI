@@ -53,4 +53,4 @@ app.use("/api/posts", postRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 
-app.listen(process.env.PORT || 8800);
+app.listen(process.env.PORT || 8000);
