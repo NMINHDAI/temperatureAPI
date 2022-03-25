@@ -1,13 +1,11 @@
 const express = require('express');
 const temperatureRoute = require('../routes/temperature');
 const error = require('../middleware/error');
-const cors = require('cors')
-const path = require("path");
-
+const cors = require('cors');
+const app = express();
 module.exports = function(app) {
   app.use(express.json());
   app.use(express.urlencoded({extended:true}));
-  app.use("/images", express.static(path.join(__dirname, "./public/images")));
   app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -28,8 +26,8 @@ module.exports = function(app) {
   });
   app.use(cors({
     origin: '*'
-}));
+  }));
   app.use("/api/temperature", temperatureRoute);
-
+  app.use(error);
 
 }
