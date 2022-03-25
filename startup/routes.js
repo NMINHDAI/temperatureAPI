@@ -1,5 +1,6 @@
 const express = require('express');
 const temperatureRoute = require('../routes/temperature');
+const authRoute = require('../routes/auth')
 const error = require('../middleware/error');
 const cors = require('cors');
 const app = express();
@@ -29,5 +30,6 @@ module.exports = function(app) {
   }));
   app.use("/api/temperature", temperatureRoute);
   app.use(error);
+
 
 }
