@@ -1,7 +1,5 @@
 const express = require('express');
 const temperatureRoute = require('../routes/temperature');
-const userRoute = require('../routes/user');
-const authRoute = require('../routes/auth')
 const error = require('../middleware/error');
 const cors = require('cors')
 const path = require("path");
@@ -31,10 +29,7 @@ module.exports = function(app) {
   app.use(cors({
     origin: '*'
 }));
-  app.use("/api/auth", authRoute);
-  app.use("/api/users", userRoute);
-  app.use("/api/posts", postRoute);
-  app.use("/api/conversations", conversationRoute);
-  app.use("/api/messages", messageRoute);
+  app.use("/api/temperature", temperatureRoute);
+
 
 }
