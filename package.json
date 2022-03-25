@@ -1,7 +1,6 @@
 {
   "name": "rest_api",
   "version": "1.0.0",
-  "description": "",
   "engines": {
     "node": "16.x"
   },
@@ -27,5 +26,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NMINHDAI/temperatureAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NMINHDAI/temperatureAPI/issues"
+  },
+  "homepage": "https://github.com/NMINHDAI/temperatureAPI#readme",
+  "description": ""
 }
