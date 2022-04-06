@@ -7,18 +7,20 @@ const { validateTemperature, Temperature } = require("../models/temperature");
 router.post("/", async (req, res) => {
   const error = await validateTemperature(req.body);
   if (error.message) res.status(400).json({ err: error.message });
-
-  let temperature = new Temperature({
-    value: req.body.value
-  });
-  temperature
-    .save()
-    .then((temperature) => {
-      res.send(temperature);
-    })
-    .catch((error) => {
-      res.status(500).json({ err: "Something went wrong" });
+  else {
+    let temperature = new Temperature({
+      value: req.body.value
     });
+    temperature
+      .save()
+      .then((temperature) => {
+        res.send(temperature);
+      })
+      .catch((error) => {
+        res.status(500).json({ err: "Something went wrong" });
+      });
+  }
+  
 });
   
 router.get("/", (req, res) => {
