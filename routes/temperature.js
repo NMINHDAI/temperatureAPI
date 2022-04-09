@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
 });
   
 router.get("/", (req, res) => {
-  Temperature.find()
+  Temperature.find().sort({ "_id" : -1 }).limit(10)
     .then((temperature) => res.send(temperature))
     .catch((error) => {
       res.status(500).send("Something went wrong");

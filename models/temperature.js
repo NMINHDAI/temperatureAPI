@@ -3,15 +3,14 @@ const yup = require("yup");
 
 const TemperatureSchema = new mongoose.Schema({
     value:{
-        type:String,
-
+        type:Number,
     }
 
 });
 
 const validateTemperature = async (temperature) => {
     const schema = yup.object().shape({
-        value: yup.string().required().min(1).max(50)
+        value: yup.number().integer().required().min(1).max(50)
     });
   
     try {
