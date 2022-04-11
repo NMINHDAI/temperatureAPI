@@ -1,23 +1,23 @@
 const auth = require('../middleware/auth');
 const express = require("express");
 const router = express.Router();
-const { validateTemperature, Temperature } = require("../models/temperature");
+const { validatePhotoresistor, Photoresistor } = require("../models/photoresistor");
 const validateSecretKey = require("./checkSecretKey");
 //POST: CREATE A NEW station
 router.post("/", async (req, res) => {
   const checkSecretKey = await validateSecretKey(req.body);
   if (!checkSecretKey) res.status(401).json({ err: 'Not Authorized'});
   else {
-    const error = await validateTemperature(req.body);
+    const error = await validatePhotoresistor(req.body);
     if (error.message) res.status(400).json({ err: error.message });
     else {
-      let temperature = new Temperature({
+      let photoresistor = new Photoresistor({
         value: req.body.value
       });
-      temperature
+      photoresistor
         .save()
-        .then((temperature) => {
-          res.send(temperature);
+        .then((photoresistor) => {
+          res.send(photoresistor);
         })
         .catch((error) => {
           res.status(500).json({ err: "Something went wrong" });
@@ -27,8 +27,8 @@ router.post("/", async (req, res) => {
 });
   
 router.get("/", (req, res) => {
-  Temperature.find().sort({ "_id" : -1 }).limit(10)
-    .then((temperature) => res.send(temperature))
+  Photoresistor.find().sort({ "_id" : -1 }).limit(1)
+    .then((photoresistor) => res.send(photoresistor))
     .catch((error) => {
       res.status(500).send("Something went wrong");
     });

@@ -1,5 +1,9 @@
 const express = require('express');
 const temperatureRoute = require('../routes/temperature');
+const humidityRoute = require('../routes/humidity');
+const landHumidityRoute = require('../routes/landHumidity');
+const lightButtonRoute = require('../routes/lightButton');
+const photoresistorRoute = require('../routes/photoresistor');
 const error = require('../middleware/error');
 const cors = require('cors');
 const app = express();
@@ -28,6 +32,10 @@ module.exports = function(app) {
     origin: '*'
   }));
   app.use("/api/temperature", temperatureRoute);
+  app.use("/api/humidity", humidityRoute);
+  app.use("/api/landHumidity", landHumidityRoute);
+  app.use("/api/lightButton", lightButtonRoute);
+  app.use("/api/photoresistor", photoresistorRoute);
   app.use(error);
 
 
