@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 });
   
 router.get("/", (req, res) => {
-  LandHumidity.find().sort({ "_id" : -1 }).limit(10)
+  LandHumidity.find().sort({ "_id" : -1 }).limit(5)
     .then((landHumidity) => res.send(landHumidity))
     .catch((error) => {
       res.status(500).send("Something went wrong");
